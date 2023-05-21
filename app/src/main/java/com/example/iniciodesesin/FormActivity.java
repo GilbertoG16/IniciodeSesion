@@ -47,38 +47,40 @@ public class FormActivity extends AppCompatActivity {
         txtContraseña = (EditText)findViewById(R.id.txtContraseña);
         txtGrupo = (EditText)findViewById(R.id.txtGrupo);
     }
-    public void AgregarUsuario(View view){
-        String correo = txtCorreo.getText().toString();
-        boolean correoExistente = false;
+    public void AgregarUsuario(View view) {
+        String correo = txtCorreo.getText().toString().trim();
+        String nombre = txtNombre.getText().toString().trim();
+        String cedula = txtCedula.getText().toString().trim();
+        String contraseña = txtContraseña.getText().toString().trim();
+        String grupo = txtGrupo.getText().toString().trim();
 
-        for (Usuario user : users) {
-            if (correo.equals(user.getCorreo())) {
-                correoExistente = true;
-                break;
+        if (nombre.length() == 0 || cedula.length() == 0 || correo.length() == 0 || contraseña.length() == 0 || grupo.length() == 0) {
+            Toast.makeText(getApplicationContext(), "Que sopa kmpa te faltan datos io loco cha madre tú botaste por elprd", Toast.LENGTH_SHORT).show();
+        } else {
+            boolean correoExistente = false;
+
+            for (Usuario user : users) {
+                if (correo.equals(user.getCorreo())) {
+                    correoExistente = true;
+                    break;
+                }
+            }
+
+            if (correoExistente) {
+                Toast.makeText(getApplicationContext(), "E´te correo ya ta aki brokiz salsa", Toast.LENGTH_SHORT).show();
+            } else {
+                Usuario nuevoUsuario = new Usuario(nombre, cedula, correo, contraseña, grupo);
+
+                users.add(nuevoUsuario);
+                Toast.makeText(getApplicationContext(), "Quedamo así pues", Toast.LENGTH_SHORT).show();
+
+                Intent i = new Intent(getApplicationContext(), PantallaUsuario.class);
+                i.putExtra("usuario", (Serializable) usuarioEncontrado);
+                i.putExtra("Users", (Serializable) users);
+                i.putExtras(nuevoUsuario.UsuarioToBundle());
+                startActivity(i);
             }
         }
-
-        if (correoExistente) {
-            Toast.makeText(getApplicationContext(), "Ete correo ya ta´ki io", Toast.LENGTH_SHORT).show();
-        } else {
-            Usuario nuevoUsuario = new Usuario(
-                    txtNombre.getText().toString(),
-                    txtCedula.getText().toString(),
-                    txtCorreo.getText().toString(),
-                    txtContraseña.getText().toString(),
-                    txtGrupo.getText().toString()
-            );
-
-            users.add(nuevoUsuario);
-            Toast.makeText(getApplicationContext(), "Usuario agregado", Toast.LENGTH_SHORT).show();
-
-            Intent i = new Intent(getApplicationContext(), PantallaUsuario.class);
-
-            i.putExtra("usuario",(Serializable) usuarioEncontrado);
-            i.putExtra("Users",(Serializable) users);
-            i.putExtras(nuevoUsuario.UsuarioToBundle());
-            startActivity(i);
-        }
-
     }
+
 }

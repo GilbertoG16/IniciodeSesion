@@ -4,6 +4,7 @@
     android:layout_height="match_parent">
 
     <TextView
+        android:layout_marginTop="10dp"
         android:id="@+id/titulonom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -11,6 +12,7 @@
         android:textSize="25dp"
         android:textStyle="bold"/>
     <TextView
+        android:layout_marginTop="10dp"
         android:id="@+id/txtNombre"
         android:layout_toRightOf="@id/titulonom"
         android:layout_alignBaseline="@id/titulonom"
@@ -20,6 +22,7 @@
         android:textSize="20dp"
         />
     <TextView
+        android:layout_marginTop="10dp"
         android:id="@+id/titulocorreo"
         android:layout_below="@id/titulonom"
         android:layout_width="wrap_content"
@@ -28,6 +31,7 @@
         android:textSize="25dp"
         android:textStyle="bold"/>
     <TextView
+
         android:id="@+id/txtCorreo"
         android:layout_width="wrap_content"
         android:layout_toRightOf="@id/titulocorreo"
@@ -37,6 +41,7 @@
         android:textSize="20dp"
         />
     <TextView
+        android:layout_marginTop="10dp"
         android:id="@+id/titulogrupo"
         android:layout_below="@id/titulocorreo"
         android:layout_width="wrap_content"

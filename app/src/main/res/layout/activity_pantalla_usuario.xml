@@ -7,35 +7,63 @@
     tools:context=".PantallaUsuario">
 
     <TextView
+        android:id="@+id/tituloNombre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nombre:"
+        android:textSize="25dp"/>
+    <TextView
         android:id="@+id/txtNombre"
+        android:layout_toRightOf="@+id/tituloNombre"
+        android:layout_alignBaseline="@+id/tituloNombre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Nombre"
-        android:textSize="25dp"
+        android:textSize="20dp"
         android:textStyle="bold"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentEnd="true">
+
+
+    <TextView
+        android:id="@+id/tituloCedula"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cedula:"
+        android:textSize="25dp"/>
     <TextView
         android:id="@+id/txtCedula"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Cédula"
+        android:textSize="20dp"
+        />
+    </LinearLayout>
+    <TextView
+        android:id="@+id/tituloGrupo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="Grupo:"
+        android:layout_below="@id/txtNombre"
         android:textSize="25dp"
-        android:layout_below="@id/txtNombre"/>
+        />
     <TextView
         android:id="@+id/txtGrupo"
+        android:layout_toRightOf="@id/tituloGrupo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Grupo"
+        android:text="H"
+        android:layout_below="@id/txtNombre"
         android:textSize="25dp"
-        android:layout_below="@id/txtCedula"/>
-    <TextView
-        android:id="@+id/txtTema"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Laboratorio inicio de sesión"
-        android:textSize="25dp"
-        android:layout_below="@id/txtGrupo"/>
+        />
 
     <TextView
+        android:layout_marginTop="20dp"
         android:id="@+id/txtTitulo"
         android:layout_below="@id/txtTema"
         android:layout_width="match_parent"
@@ -43,7 +71,19 @@
         android:text="Usuarios"
         android:textSize="24dp"
         android:textStyle="bold"/>
+    <TextView
+        android:id="@+id/txtTema"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="LABORATORIO (INICIO DE SESIÓN)"
+        android:textAlignment="center"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        android:layout_below="@id/txtGrupo"/>
+
+
     <ListView
+        android:layout_marginTop="15dp"
         android:id="@+id/lstUsu"
         android:layout_below="@id/txtTitulo"
         android:layout_width="match_parent"

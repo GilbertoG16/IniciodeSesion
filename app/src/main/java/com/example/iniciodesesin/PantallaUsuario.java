@@ -45,7 +45,7 @@ public class PantallaUsuario extends AppCompatActivity {
             }
         }
         MostrarDatos();
-        Toast.makeText(getApplicationContext(), "Bienvenido "+usuarioEncontrado.getNombre() , Toast.LENGTH_SHORT).show();
+
 
 
         usuariosAdapter = new UsuariosAdapter(
@@ -66,6 +66,7 @@ public class PantallaUsuario extends AppCompatActivity {
         if(usuarioEncontrado != null){
             nombre.setText(usuarioEncontrado.getNombre());
             cedula.setText(usuarioEncontrado.getCedula());
+            grupo.setText(usuarioEncontrado.getGrupo());
         }
     }
 
