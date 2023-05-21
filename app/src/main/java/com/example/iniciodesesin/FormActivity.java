@@ -37,7 +37,7 @@ public class FormActivity extends AppCompatActivity {
                 usuarioEncontrado=us;
             }
         }
-        Toast.makeText(getApplicationContext(), "Número de usuarios: " + users.size()+" ", Toast.LENGTH_SHORT).show();
+
     }
 
     private void InicializarControles() {
@@ -59,7 +59,7 @@ public class FormActivity extends AppCompatActivity {
         }
 
         if (correoExistente) {
-            Toast.makeText(getApplicationContext(), "El correo ya existe", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Ete correo ya ta´ki io", Toast.LENGTH_SHORT).show();
         } else {
             Usuario nuevoUsuario = new Usuario(
                     txtNombre.getText().toString(),
