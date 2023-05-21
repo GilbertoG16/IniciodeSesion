@@ -10,35 +10,52 @@ import android.widget.Toast;
 
 import com.example.iniciodesesin.Models.Usuario;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    List<Usuario> users;
     EditText txtCorreo, txtContraseña;
+    Usuario usuarioEncontrado;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         InicializarControles();
-
-         users = LlenarListaDeUsuarios();
+        LoadListView();
     }
 
     private void InicializarControles() {
         txtCorreo = (EditText)findViewById(R.id.txtCorreo);
         txtContraseña = (EditText)findViewById(R.id.txtContraseña);
     }
+
+
     private List<Usuario> LlenarListaDeUsuarios(){
-        List<Usuario> users = new ArrayList<>();
+        List<Usuario> users = new ArrayList<Usuario>();
         users.add(new Usuario("Gilberto","8-987-2197","girongg166@hotmail.com","12345"));
         users.add(new Usuario("Sencillo","8-987-2590","eltitere@hotmail.com","12345"));
-        users.add(new Usuario("Gilberto","8-987-2197","girongg166@hotmail.com","12345"));
+        users.add(new Usuario("Gilberto","8-987-2197","g","12345"));
+        users.add(new Usuario("Manuel","8-987-2197","gg16@hotmail.com","12345"));
 
         return users;
     }
+    private void LoadListView(){
+
+        Bundle b = getIntent().getExtras();
+        if(b!=null){
+            Usuario user = new Usuario().restoreBundle(b);
+            List<Usuario> users = LlenarListaDeUsuarios();
+            users.add(user);
+        }
+        else{
+
+        }
+
+    }
     public void InicioDeSesion(View v){
+        List<Usuario> users = this.LlenarListaDeUsuarios();
         boolean c=false;
         try{
             String correo = txtCorreo.getText().toString();
@@ -47,9 +64,14 @@ public class MainActivity extends AppCompatActivity {
             for(int i = 0;i<users.size();i++){
                 if(correo.equals(users.get(i).getCorreo())){
                     if(contraseña.equals(users.get(i).getContraseña())){
-                        Intent intent = new Intent(getApplicationContext(), PantallaUsuario.class);
-                        startActivity(intent);
+                        usuarioEncontrado = users.get(i);
                         c=true;
+                        Intent intent = new Intent(getApplicationContext(), PantallaUsuario.class);
+                        intent.putExtra("usuario",(Serializable) usuarioEncontrado);
+                        intent.putExtra("Users",(Serializable) users);
+                        startActivity(intent);
+
+                        break;
                     }
                 }
                 else if(c==false){
@@ -61,4 +83,5 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(),"Error",Toast.LENGTH_SHORT).show();
         }
     }
+
 }

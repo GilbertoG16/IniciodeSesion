@@ -1,12 +1,24 @@
 package com.example.iniciodesesin.Models;
 
-public class Usuario {
+import android.os.Bundle;
+
+
+
+import androidx.annotation.NonNull;
+
+import java.io.Serializable;
+
+
+public class Usuario implements Serializable {
 
 
     private String nombre;
     private String cedula;
     private String correo;
     private String contraseña;
+    public Usuario(){
+
+    }
 
     public Usuario(String nombre, String cedula, String correo, String contraseña) {
         this.nombre = nombre;
@@ -44,6 +56,23 @@ public class Usuario {
 
     public void setContraseña(String contraseña) {
         this.contraseña = contraseña;
+    }
+
+    public Bundle UsuarioToBundle(){
+        Bundle b = new Bundle();
+        b.putString("nombre",this.getNombre());
+        b.putString("cedula",this.getCedula());
+        b.putString("correo",this.getCorreo());
+        b.putString("contraseña",this.getContraseña());
+        return b;
+    }
+    public Usuario restoreBundle(Bundle b){
+        return new Usuario(
+                b.getString("nombre"),
+                b.getString("cedula"),
+                b.getString("correo"),
+                b.getString("contraseña")
+        );
     }
 
 

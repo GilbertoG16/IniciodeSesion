@@ -6,4 +6,33 @@
     android:layout_height="match_parent"
     tools:context=".PantallaUsuario">
 
+    <TextView
+        android:id="@+id/txtNombre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nombre"
+        android:textSize="25dp"
+        android:textStyle="bold"/>
+    <TextView
+        android:id="@+id/txtCedula"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cédula"
+        android:textSize="25dp"
+        android:layout_below="@id/txtNombre"/>
+    <TextView
+        android:id="@+id/txtGrupo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Grupo"
+        android:textSize="25dp"
+        android:layout_below="@id/txtCedula"/>
+    <TextView
+        android:id="@+id/txtTema"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Laboratorio inicio de sesión"
+        android:textSize="25dp"
+        android:layout_below="@id/txtGrupo"/>
+
 </RelativeLayout>
