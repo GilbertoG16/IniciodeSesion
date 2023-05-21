@@ -6,9 +6,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.iniciodesesin.Helpers.UsuariosAdapter;
 import com.example.iniciodesesin.Models.Usuario;
 
 import java.io.Serializable;
@@ -19,11 +21,14 @@ public class PantallaUsuario extends AppCompatActivity {
     TextView nombre,cedula,grupo,c;
     List<Usuario> users;
     Usuario usuarioEncontrado;
+    UsuariosAdapter usuariosAdapter;
+    ListView lstUsu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pantalla_usuario);
+        lstUsu = (ListView)findViewById(R.id.lstUsu);
         InicalizarControles();
 
         Bundle bundle = getIntent().getExtras();
@@ -31,6 +36,8 @@ public class PantallaUsuario extends AppCompatActivity {
         if(bundle != null){
             List<Usuario> user = (List<Usuario>) bundle.getSerializable("Users");
             Usuario us = (Usuario) bundle.getSerializable("usuario");
+            Usuario usu = new Usuario().restoreBundle(bundle);
+            users.add(usu);
 
             if(user != null){
                 users=user;
@@ -39,6 +46,14 @@ public class PantallaUsuario extends AppCompatActivity {
         }
         MostrarDatos();
         Toast.makeText(getApplicationContext(), "Bienvenido "+usuarioEncontrado.getNombre() , Toast.LENGTH_SHORT).show();
+
+
+        usuariosAdapter = new UsuariosAdapter(
+                getApplicationContext(),
+                users
+        );
+        lstUsu.setAdapter(usuariosAdapter);
+
 
     }
 

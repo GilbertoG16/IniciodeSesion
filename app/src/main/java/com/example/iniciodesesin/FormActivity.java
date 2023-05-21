@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FormActivity extends AppCompatActivity {
-    EditText txtNombre,txtCorreo,txtCedula,txtContraseña;
+    EditText txtNombre,txtCorreo,txtCedula,txtContraseña,txtGrupo;
     List<Usuario> users ;
     Usuario usuarioEncontrado;
 
@@ -45,6 +45,7 @@ public class FormActivity extends AppCompatActivity {
         txtCorreo = (EditText)findViewById(R.id.txtCorreo);
         txtCedula = (EditText)findViewById(R.id.txtCedula);
         txtContraseña = (EditText)findViewById(R.id.txtContraseña);
+        txtGrupo = (EditText)findViewById(R.id.txtGrupo);
     }
     public void AgregarUsuario(View view){
         String correo = txtCorreo.getText().toString();
@@ -64,16 +65,18 @@ public class FormActivity extends AppCompatActivity {
                     txtNombre.getText().toString(),
                     txtCedula.getText().toString(),
                     txtCorreo.getText().toString(),
-                    txtContraseña.getText().toString()
+                    txtContraseña.getText().toString(),
+                    txtGrupo.getText().toString()
             );
 
             users.add(nuevoUsuario);
             Toast.makeText(getApplicationContext(), "Usuario agregado", Toast.LENGTH_SHORT).show();
 
             Intent i = new Intent(getApplicationContext(), PantallaUsuario.class);
-            i.putExtras(nuevoUsuario.UsuarioToBundle());
+
             i.putExtra("usuario",(Serializable) usuarioEncontrado);
             i.putExtra("Users",(Serializable) users);
+            i.putExtras(nuevoUsuario.UsuarioToBundle());
             startActivity(i);
         }
 

@@ -35,4 +35,20 @@
         android:textSize="25dp"
         android:layout_below="@id/txtGrupo"/>
 
+    <TextView
+        android:id="@+id/txtTitulo"
+        android:layout_below="@id/txtTema"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Usuarios"
+        android:textSize="24dp"
+        android:textStyle="bold"/>
+    <ListView
+        android:id="@+id/lstUsu"
+        android:layout_below="@id/txtTitulo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
+
 </RelativeLayout>

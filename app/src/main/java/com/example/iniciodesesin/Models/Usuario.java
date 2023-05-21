@@ -16,15 +16,20 @@ public class Usuario implements Serializable {
     private String cedula;
     private String correo;
     private String contraseña;
+
+
+
+    private String grupo;
     public Usuario(){
 
     }
 
-    public Usuario(String nombre, String cedula, String correo, String contraseña) {
+    public Usuario(String nombre, String cedula, String correo, String contraseña,String grupo) {
         this.nombre = nombre;
         this.cedula = cedula;
         this.correo = correo;
         this.contraseña = contraseña;
+        this.grupo=grupo;
     }
     public String getNombre() {
         return nombre;
@@ -57,6 +62,13 @@ public class Usuario implements Serializable {
     public void setContraseña(String contraseña) {
         this.contraseña = contraseña;
     }
+    public String getGrupo() {
+        return grupo;
+    }
+
+    public void setGrupo(String grupo) {
+        this.grupo = grupo;
+    }
 
     public Bundle UsuarioToBundle(){
         Bundle b = new Bundle();
@@ -64,16 +76,20 @@ public class Usuario implements Serializable {
         b.putString("cedula",this.getCedula());
         b.putString("correo",this.getCorreo());
         b.putString("contraseña",this.getContraseña());
+        b.putString("grupo",this.getGrupo());
         return b;
     }
+
     public Usuario restoreBundle(Bundle b){
         return new Usuario(
                 b.getString("nombre"),
                 b.getString("cedula"),
                 b.getString("correo"),
-                b.getString("contraseña")
+                b.getString("contraseña"),
+                b.getString("grupo")
         );
     }
+
 
 
 }

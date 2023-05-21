@@ -23,7 +23,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         InicializarControles();
-        LoadListView();
     }
 
     private void InicializarControles() {
@@ -34,25 +33,12 @@ public class MainActivity extends AppCompatActivity {
 
     private List<Usuario> LlenarListaDeUsuarios(){
         List<Usuario> users = new ArrayList<Usuario>();
-        users.add(new Usuario("Gilberto","8-987-2197","girongg166@hotmail.com","12345"));
-        users.add(new Usuario("Sencillo","8-987-2590","eltitere@hotmail.com","12345"));
-        users.add(new Usuario("Gilberto","8-987-2197","g","12345"));
-        users.add(new Usuario("Manuel","8-987-2197","gg16@hotmail.com","12345"));
+        users.add(new Usuario("Gilberto","8-987-2197","girongg166@hotmail.com","12345","H"));
+        users.add(new Usuario("Sencillo","8-987-2590","eltitere@hotmail.com","12345","H"));
+        users.add(new Usuario("Gilberto","8-987-2197","g","12345","H"));
+        users.add(new Usuario("Manuel","8-987-2197","gg16@hotmail.com","12345","H"));
 
         return users;
-    }
-    private void LoadListView(){
-
-        Bundle b = getIntent().getExtras();
-        if(b!=null){
-            Usuario user = new Usuario().restoreBundle(b);
-            List<Usuario> users = LlenarListaDeUsuarios();
-            users.add(user);
-        }
-        else{
-
-        }
-
     }
     public void InicioDeSesion(View v){
         List<Usuario> users = this.LlenarListaDeUsuarios();
