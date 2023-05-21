@@ -18,6 +18,7 @@ import java.util.List;
 public class FormActivity extends AppCompatActivity {
     EditText txtNombre,txtCorreo,txtCedula,txtContraseña;
     List<Usuario> users ;
+    Usuario usuarioEncontrado;
 
 
     @Override
@@ -30,8 +31,10 @@ public class FormActivity extends AppCompatActivity {
         users = new ArrayList<Usuario>();
         if(bundle != null){
             List<Usuario> user = (List<Usuario>) bundle.getSerializable("Users");
+            Usuario us = (Usuario) bundle.getSerializable("usuario");
             if(user != null){
                 users=user;
+                usuarioEncontrado=us;
             }
         }
         Toast.makeText(getApplicationContext(), "Número de usuarios: " + users.size()+" ", Toast.LENGTH_SHORT).show();
@@ -67,10 +70,11 @@ public class FormActivity extends AppCompatActivity {
             users.add(nuevoUsuario);
             Toast.makeText(getApplicationContext(), "Usuario agregado", Toast.LENGTH_SHORT).show();
 
-            Intent intent = new Intent(getApplicationContext(), PantallaUsuario.class);
-            intent.putExtra("Users", (Serializable) users);
-            intent.putExtra("usuario", nuevoUsuario);
-            startActivity(intent);
+            Intent i = new Intent(getApplicationContext(), PantallaUsuario.class);
+            i.putExtras(nuevoUsuario.UsuarioToBundle());
+            i.putExtra("usuario",(Serializable) usuarioEncontrado);
+            i.putExtra("Users",(Serializable) users);
+            startActivity(i);
         }
 
     }

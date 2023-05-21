@@ -38,7 +38,7 @@ public class PantallaUsuario extends AppCompatActivity {
             }
         }
         MostrarDatos();
-        Toast.makeText(getApplicationContext(), "Número de usuarios: " + users.size()+ " "+usuarioEncontrado.getNombre() , Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "Bienvenido "+usuarioEncontrado.getNombre() , Toast.LENGTH_SHORT).show();
 
     }
 
@@ -63,7 +63,7 @@ public class PantallaUsuario extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item){
         if(item.getItemId()==R.id.miNew){
             Intent i = new Intent(getApplicationContext(),FormActivity.class);
-
+            i.putExtra("usuario",(Serializable) usuarioEncontrado);
             i.putExtra("Users",(Serializable) users);
             startActivity(i);
         }

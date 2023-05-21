@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
     }
     public void InicioDeSesion(View v){
         List<Usuario> users = this.LlenarListaDeUsuarios();
-        boolean c=false;
+
         try{
             String correo = txtCorreo.getText().toString();
             String contraseña = txtContraseña.getText().toString();
@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
                 if(correo.equals(users.get(i).getCorreo())){
                     if(contraseña.equals(users.get(i).getContraseña())){
                         usuarioEncontrado = users.get(i);
-                        c=true;
+
                         Intent intent = new Intent(getApplicationContext(), PantallaUsuario.class);
                         intent.putExtra("usuario",(Serializable) usuarioEncontrado);
                         intent.putExtra("Users",(Serializable) users);
@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     }
                 }
-                else if(c==false){
+                else{
                     Toast.makeText(getApplicationContext(),"Usuario o contraseña incorrecta", Toast.LENGTH_SHORT).show();
                 }
             }
